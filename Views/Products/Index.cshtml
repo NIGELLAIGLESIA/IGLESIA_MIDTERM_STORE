@@ -3,16 +3,18 @@
 
 <h1>Products</h1>
 
-<form asp-action="Index" method="get" class="mb-3">
+<form asp-action="Index" method="get" class="mb-3 d-flex gap-2">
+
     <input type="text" name="searchString" value="@ViewData["searchString"]"
-           placeholder="Search product name..." />
+       class="form-control rounded-pill" placeholder="Search product name..." />
 
-    <button type="submit">Search</button>
+    <button type="submit" class="btn btn-outline-secondary rounded-pill">Search</button>
 
-    <a asp-action="Index">Clear</a>
+    <a asp-action="Index" class="btn btn-outline-secondary rounded-pill">Clear</a>
+
 </form>
 
-<a asp-action="Create" class="btn btn-primary mb-3">+ Add Product</a>
+<a asp-action="Create" class="btn btn-outline-secondary rounded-pill mb-3">+ Add Product</a>
 
 <div class="row">
   @foreach (var p in Model)
@@ -25,8 +27,8 @@
           <p class="card-text"><strong>ID:</strong> @p.Id</p>
           <p class="card-text">@p.Description</p>
           <p class="card-text fw-semibold">₱@p.Price</p>
-          <span class="badge text-bg-light rounded-pill mb-3">@p.Category</span>
-
+          <span class="badge bg-danger-subtle text-danger rounded-pill mb-3">@p.Category</span>
+          
  <div class="d-flex gap-2">
 
           <a asp-action="Edit"

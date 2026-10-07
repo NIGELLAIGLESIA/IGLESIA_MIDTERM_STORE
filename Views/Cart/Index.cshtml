@@ -4,15 +4,15 @@
     ViewData["Title"] = "Cart";
 }
 
-<h1>Shopping Cart</h1>
+<h1>My Cart ⋆</h1>
 
-<table class="table table-bordered">
+<table class="table table-bordered rounded-4 overflow-hidden">
     <thead>
         <tr>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Action</th>
+            <th class="fw-semibold p-3">Product Name</th>
+            <th class="fw-semibold p-3">Price</th>
+            <th class="fw-semibold p-3">Quantity</th>
+            <th class="fw-semibold p-3">Action</th>
         </tr>
     </thead>
 
@@ -20,26 +20,27 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.ProductName</td>
-                <td>@item.Price</td>
-                <td>
-    <form asp-action="Update" method="post">
-        <input type="hidden" name="id" value="@item.Id" />
+                <td class="p-3">@item.ProductName</td>
+                <td class="p-3">@item.Price</td>
+                <td class="p-3">
+                    <form asp-action="Update" method="post">
+                        <input type="hidden" name="id" value="@item.Id" />
 
-        <input type="number"
-               name="quantity"
-               value="@item.Quantity"
-               min="1" />
+                        <input type="number"
+                               name="quantity"
+                               value="@item.Quantity"
+                               min="1" />
 
-        <button type="submit" class="btn btn-sm btn-primary">
-            Update
-        </button>
-    </form>
-</td>
-                <td>
+                        <button type="submit" class="btn btn-outline-secondary btn-sm rounded-pill">
+                            Update
+                        </button>
+                    </form>
+                </td>
+
+                <td class="p-3">
                     <a asp-action="Remove"
                        asp-route-id="@item.Id"
-                       class="btn btn-sm btn-danger">
+                       class="btn btn-outline-secondary btn-sm rounded-pill">
                         Remove
                     </a>
                 </td>
@@ -48,10 +49,12 @@
     </tbody>
 </table>
 
-<h3>Total: @Model.Sum(item => item.Price * item.Quantity)</h3>
+<h3 class="mb-3">
+    Total: @Model.Sum(item => item.Price * item.Quantity)
+</h3>
 
 <a asp-controller="Products"
    asp-action="Index"
-   class="btn btn-primary">
+   class="btn bg-white border border-danger-subtle rounded-pill">
     Continue Shopping
 </a>

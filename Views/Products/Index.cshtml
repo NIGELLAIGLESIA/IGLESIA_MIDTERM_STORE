@@ -14,48 +14,32 @@
 
 <a asp-action="Create" class="btn btn-primary mb-3">+ Add Product</a>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var p in Model)
-        {
-            <tr>
-                <td>@p.Id</td>
-                <td>@p.Name</td>
-                <td>@p.Description</td>
-                <td>@p.Price</td>
-                <td>@p.Category</td>
-                <td>
-                    <a asp-action="Edit"
-                       asp-route-id="@p.Id"
-                       class="btn btn-sm btn-warning">
-                        Edit
-                    </a>
+<div class="row">
+  @foreach (var p in Model)
+  {
+    <div class="col-md-4 mb-4">
+      <div class="card" style="width: 18rem;">
+        <img src="@p.ImageUrl" class="card-img-top" alt="@p.Name">
+        <div class="card-body">
+          <h5 class="card-title">@p.Name</h5>
+          <p class="card-text">@p.Description</p>
+          <p class="card-text"><strong>Price:</strong> @p.Price</p>
+          <p class="card-text"><strong>Category:</strong> @p.Category</p>
 
-                    <a asp-action="Delete"
-                       asp-route-id="@p.Id"
-                       class="btn btn-sm btn-danger"
-                       onclick="return confirm('Delete this product?')">
-                        Delete
-                    </a>
+          <a asp-action="Edit"
+             asp-route-id="@p.Id"
+             class="btn btn-warning">Edit</a>
 
-                    <a asp-action="AddToCart"
-                        asp-route-id="@p.Id"
-                         class="btn btn-sm btn-success">
-                         Add to Cart
-                    </a>
-                    
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+          <a asp-action="Delete"
+             asp-route-id="@p.Id"
+             class="btn btn-danger"
+             onclick="return confirm('Delete this product?')">Delete</a>
+
+          <a asp-action="AddToCart"
+             asp-route-id="@p.Id"
+             class="btn btn-success">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  }
+</div>

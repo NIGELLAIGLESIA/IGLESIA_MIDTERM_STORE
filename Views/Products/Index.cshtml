@@ -18,26 +18,30 @@
   @foreach (var p in Model)
   {
     <div class="col-md-4 mb-4">
-      <div class="card" style="width: 18rem;">
+    <div class="card h-100 shadow-sm rounded-4">
         <img src="@p.ImageUrl" class="card-img-top" alt="@p.Name">
         <div class="card-body">
-          <h5 class="card-title">@p.Name</h5>
+          <h5 class="card-title fw-semibold">@p.Name</h5>
+          <p class="card-text"><strong>ID:</strong> @p.Id</p>
           <p class="card-text">@p.Description</p>
-          <p class="card-text"><strong>Price:</strong> @p.Price</p>
-          <p class="card-text"><strong>Category:</strong> @p.Category</p>
+          <p class="card-text fw-semibold">₱@p.Price</p>
+          <span class="badge text-bg-light rounded-pill mb-3">@p.Category</span>
+
+ <div class="d-flex gap-2">
 
           <a asp-action="Edit"
-             asp-route-id="@p.Id"
-             class="btn btn-warning">Edit</a>
+          asp-route-id="@p.Id"
+          class="btn btn-warning-subtle btn-sm rounded-pill">Edit</a>
 
           <a asp-action="Delete"
-             asp-route-id="@p.Id"
-             class="btn btn-danger"
-             onclick="return confirm('Delete this product?')">Delete</a>
+          asp-route-id="@p.Id"
+          class="btn btn-danger-subtle btn-sm rounded-pill"
+          onclick="return confirm('Delete this product?')">Delete</a>
 
-          <a asp-action="AddToCart"
-             asp-route-id="@p.Id"
-             class="btn btn-success">Add to Cart</a>
+<a asp-action="AddToCart"
+   asp-route-id="@p.Id"
+   class="btn btn-success-subtle btn-sm rounded-pill">Add to Cart</a>
+   </div>
         </div>
       </div>
     </div>
